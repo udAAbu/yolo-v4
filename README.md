@@ -1,21 +1,7 @@
 # yolov4-custom-functions
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE)
 
-A wide range of custom functions for YOLOv4, YOLOv4-tiny, YOLOv3, and YOLOv3-tiny implemented in TensorFlow, TFLite and TensorRT.
-
-DISCLAIMER: This repository is very similar to my repository: [tensorflow-yolov4-tflite](https://github.com/theAIGuysCode/tensorflow-yolov4-tflite). I created this repository to explore coding custom functions to be implemented with YOLOv4, and they may worsen the overal speed of the application and make it not optimized in respect to time complexity. So if you want to run the most optimal YOLOv4 code with TensorFlow than head over to my other repository. This one is to explore cool customizations and applications that can be created using YOLOv4!
-
-### Demo of Object Counter Custom Function in Action!
-<p align="center"><img src="data/helpers/object_counter.gif"\></p>
-
-## Currently Supported Custom Functions and Flags
-* [x] [Counting Objects (total objects and per class)](#counting)
-* [x] [Print Info About Each Detection (class, confidence, bounding box coordinates)](#info)
-* [x] [Crop Detections and Save as New Image](#crop)
-* [x] [License Plate Recognition Using Tesseract OCR](#license)
-* [x] [Apply Tesseract OCR to Detections to Extract Text](#ocr)
-
-If there is a custom function you want to see created then create an issue in the issues tab and suggest it! If enough people suggest the same custom function I will add it quickly!
+This is a tensorflow YOLO-V4 implementation of knee joint detection and automatic cropping. 
 
 ## Getting Started
 ### Conda (Recommended)
@@ -42,28 +28,19 @@ pip install -r requirements-gpu.txt
 Make sure to use CUDA Toolkit version 10.1 as it is the proper version for the TensorFlow version used in this repository.
 https://developer.nvidia.com/cuda-10.1-download-archive-update2
 
-## Downloading Official Pre-trained Weights
-YOLOv4 comes pre-trained and able to detect 80 classes. For easy demo purposes we will use the pre-trained weights.
-Download pre-trained yolov4.weights file: https://drive.google.com/open?id=1cewMfusmPjYWbrnuJRuKhPMwRe_b9PaT
+## Using Custom YOLOv4 Weights on detecting knee joint
 
-Copy and paste yolov4.weights from your downloads folder into the 'data' folder of this repository.
-
-If you want to use yolov4-tiny.weights, a smaller model that is faster at running detections but less accurate, download file here: https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v4_pre/yolov4-tiny.weights
-
-## Using Custom Trained YOLOv4 Weights
-<strong>Learn How To Train Custom YOLOv4 Weights here: https://www.youtube.com/watch?v=mmj3nxGT2YQ </strong>
-
-<strong>Watch me Walk-Through using Custom Model in TensorFlow :https://www.youtube.com/watch?v=nOIVxi5yurE </strong>
-
-USE MY LICENSE PLATE TRAINED CUSTOM WEIGHTS: https://drive.google.com/file/d/1EUPtbtdF0bjRtNjGv436vDY28EN5DXDH/view?usp=sharing
-
-Copy and paste your custom .weights file into the 'data' folder and copy and paste your custom .names into the 'data/classes/' folder.
-
-The only change within the code you need to make in order for your custom model to work is on line 14 of 'core/config.py' file.
-Update the code to point at your custom .names file as seen below. (my custom .names file is called custom.names but yours might be named differently)
-<p align="center"><img src="data/helpers/custom_config.png" width="640"\></p>
-
-<strong>Note:</strong> If you are using the pre-trained yolov4 then make sure that line 14 remains <strong>coco.names</strong>.
+  * Copy and paste your ![**custom.weights**](https://drive.google.com/file/d/1VdA1BS4oJUX9-oQ_qviK_5KKtvMclYJZ/view?usp=sharing) file into the 'data' folder.
+  * Build the model with the following command:
+  ```bash
+  python save_model.py --weights ./data/custom.weights --output ./checkpoints/custom-416 --input_size 416 --model yolov4 
+  ```
+  * Upload the images to **data/images/** folder.
+  * Start cropping the image with the following command (you can remove --dont_show if you want to see the images with bounding box pop out in your screen):
+  ```bash
+  python detect.py --weights ./checkpoints/custom-416 --size 416 --model yolov4 --images ./data/images/ --crop --dont_show
+  ```
+  * The cropped images will go to the **detections/crop/** folder
 
 ## YOLOv4 Using Tensorflow (tf, .pb model)
 To implement YOLOv4 using TensorFlow, first we convert the .weights into the corresponding TensorFlow model files and then run the model.
