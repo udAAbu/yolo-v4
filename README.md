@@ -35,7 +35,7 @@ https://developer.nvidia.com/cuda-10.1-download-archive-update2
   ```bash
   python save_model.py --weights ./data/custom.weights --output ./checkpoints/custom-416 --input_size 416 --model yolov4 
   ```
-  * Upload the images to **data/images/** folder.
+  * Copy the images that you want to crop to **data/images/** folder.
   * Start cropping the image with the following command (you can remove **--dont_show** if you want to see the images with bounding box pop out in your screen):
   ```bash
   python detect.py --weights ./checkpoints/custom-416 --size 416 --model yolov4 --images ./data/images/ --crop --dont_show
