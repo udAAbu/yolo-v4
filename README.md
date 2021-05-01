@@ -1,7 +1,7 @@
 # yolov4-custom-functions
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE)
 
-This is a tensorflow YOLO-V4 implementation of knee joint detection and automatic cropping. 
+This is a tensorflow YOLO-V4 implementation for knee joint detection and automatic cropping. 
 
 ## Getting Started
 ### Conda (Recommended)
@@ -40,7 +40,7 @@ https://developer.nvidia.com/cuda-10.1-download-archive-update2
   ```bash
   python detect.py --weights ./checkpoints/custom-416 --size 416 --model yolov4 --images ./data/images/ --crop --dont_show
   ```
-  * The cropped images will go to the **detections/crop/** folder
+  * The cropped images will automatically go to the **detections/crop/** folder
 
 ### References  
 
