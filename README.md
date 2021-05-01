@@ -44,5 +44,5 @@ https://developer.nvidia.com/cuda-10.1-download-archive-update2
 
 ### References  
 
-  * [tensorflow-yolov4-tflite](https://github.com/hunglc007/tensorflow-yolov4-tflite)
-  * [yolov4-custom-functions](https://github.com/theAIGuysCode/yolov4-custom-functions)
+  * [hunglc007/tensorflow-yolov4-tflite](https://github.com/hunglc007/tensorflow-yolov4-tflite)
+  * [theAIGuysCode/yolov4-custom-functions](https://github.com/theAIGuysCode/yolov4-custom-functions)
